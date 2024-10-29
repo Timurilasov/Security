@@ -7,18 +7,17 @@ import java.util.List;
 
 public interface UserServices {
 
-    User findByUsername(String username); // Найти пользователя по имени
+    User findByUsername(String username);
 
-    User getUserById(Long id); // Получить пользователя по ID
+    User getUserById(Long id);
 
-    User save(User user); // Сохранить или обновить пользователя
+    User save(User user);
 
-    void deleteUserById(Long id); // Удалить пользователя по ID
+    void deleteUserById(Long id);
 
-    List<User> getAllUsers(); // Получить всех пользователей
+    List<User> getAllUsers(); 
 
-    Role findByName(String name); // Найти роль по имени
+    Role findByName(String name); 
 
-    List<User> findByNameOrEmail(String search); // Найти пользователей по имени или email
-}
+    List<User> findByNameOrEmail(String search);
 
