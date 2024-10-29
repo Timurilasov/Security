@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One user</title>
+</head>
+
+<body>
+<p th:text="${'name:'+  ': ' +   user.getUsername() }">VALUE</p>
+<br/>
+<p th:text="${'Email:' + ': ' + user.getEmail()}">VALUE</p>
+<br/>
+<p th:text="${'age:' + ': ' + user.getAge()}">VALUE</p>
+<br/>
+<p th:text="${'id' + ': ' + user.getId()}">VALUE</p>
+
+<p th:text="${'role' + ': ' + user.getRoles()}"></p>
+
+<p th:text="${'passwrod' + ': ' + user.getPassword()}"></p>
+
+<a th:href="@{admin/editUser/{id}(id=${user.id})}">Edit</a>
+
+
+<br>
+
+<form th:method="DELETE" th:action="@{admin/delete/{id}(id=${user.id})}">
+    <br/>
+    <br/>
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

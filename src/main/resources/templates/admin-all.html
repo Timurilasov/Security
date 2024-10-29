@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all users</title>
+    <meta charset="UTF-8" />
+    <title>Users</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+
+<div th:each="user : ${users}">
+    <a th:href="@{/admin/{id}(id=${user.getId()})}"
+       th:text="${user.getUsername() + ', ' + user.getAge() + ', '+ user.getEmail() + ', ' + user.getId()}">user</a>
+
+</div>
+
+
+<br/>
+<hr/>
+
+<a href="admin/createUser">Create new person</a>
+<br/>
+<a class="button" href="#" th:href="@{/logout}">Log Out</a>
+<br/>
+</body>
+</html>
