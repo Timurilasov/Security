@@ -31,20 +31,20 @@ public class AdminController {
     @GetMapping("/add")
     public String showAddUserForm(Model model) {
         model.addAttribute("user", new User());
-        addAllRolesToModel(model); // Добавляем роли в модель
-        return "admin/addUser"; // Шаблон для добавления пользователя
+        addAllRolesToModel(model); 
+        return "admin/addUser"; 
     }
 
     @PostMapping("/add")
     public String addUser(User user) {
-        userService.saveUser(user); // Сохраняем нового пользователя
-        return "redirect:/admin/users"; // Перенаправление на список пользователей
+        userService.saveUser(user); 
+        return "redirect:/admin/users";
     }
 
     private void addAllRolesToModel(Model model) {
-        List<Role> roles = roleService.findAll(); // Получаем все роли
+        List<Role> roles = roleService.findAll(); 
         model.addAttribute("roles", roles);
     }
 
-    // Дополнительные методы управления пользователями...
+   
 }
