@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itmentor.spring.boot_security.demo.model.Role;
 import ru.itmentor.spring.boot_security.demo.model.User;
-import ru.itmentor.spring.boot_security.demo.repositories.RoleRepository; // Добавьте необходимый импорт
+import ru.itmentor.spring.boot_security.demo.repositories.RoleRepository; 
 import ru.itmentor.spring.boot_security.demo.repositories.UserRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.itmentor.spring.boot_security.demo.model.User;
@@ -12,8 +12,8 @@ import java.util.List;
 
 @Service
 public class UserServicesImpl implements UserServices {
-    private final UserRepository userRepository; // Предполагаемая зависимость для работы с пользователями
-    private final RoleRepository roleRepository; // Предполагаемая зависимость для работы с ролями
+    private final UserRepository userRepository; 
+    private final RoleRepository roleRepository; 
 
     @Autowired
     public UserServicesImpl(UserRepository userRepository, RoleRepository roleRepository) {
@@ -33,7 +33,7 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public User save(User user) {
-        return userRepository.save(user); // Удален лишний метод
+        return userRepository.save(user);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public Role findByName(String name) {
-        return roleRepository.findByName(name); // Предполагается, что этот метод существует
+        return roleRepository.findByName(name); 
     }
 
     @Override
