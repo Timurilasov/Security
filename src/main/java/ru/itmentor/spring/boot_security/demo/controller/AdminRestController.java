@@ -2,31 +2,28 @@ package ru.itmentor.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import ru.itmentor.spring.boot_security.demo.model.Role;
 import ru.itmentor.spring.boot_security.demo.model.User;
-import ru.itmentor.spring.boot_security.demo.services.RoleServiceImpl;
-import ru.itmentor.spring.boot_security.demo.services.UserServicesImpl;
+import ru.itmentor.spring.boot_security.demo.services.UserServices;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/admin")
-@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@RequestMapping("/api/admin") 
 public class AdminRestController {
-    private final UserServicesImpl userServices;
-    private final RoleServiceImpl roleService;
 
     @Autowired
-    public AdminRestController(UserServicesImpl userServices, RoleServiceImpl roleService) {
-        this.userServices = userServices;
-        this.roleService = roleService;
+    private UserServices userServices;
+
+    @GetMapping("/")
+    public List<User> getAllUsers() {
+        return userServices.getAllUsers();
     }
 
-    @GetMapping("/users")
-    public List<User> showUserList() {
-        return userServices.getUsersAndRoles();
+    @PostMapping("/")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = userServices.createUser(user);
+        return ResponseEntity.status(201).body(createdUser);
     }
 
     @GetMapping("/{id}")
@@ -36,12 +33,6 @@ public class AdminRestController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(user);
-    }
-
-    @PostMapping("/new")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = userServices.createUser(user);
-        return ResponseEntity.status(201).body(createdUser);
     }
 
     @PatchMapping("/{id}")
@@ -59,3 +50,4 @@ public class AdminRestController {
         return ResponseEntity.noContent().build();
     }
 }
+
