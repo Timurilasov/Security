@@ -53,7 +53,7 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public List<User> findByNameOrEmail(String search) {
-        return userRepository.findByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(search, search); // Пример реализации
-        // Предполагаем, что в UserRepository существует метод для поиска
+        return userRepository.findByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(search, search); 
+        
     }
 }
